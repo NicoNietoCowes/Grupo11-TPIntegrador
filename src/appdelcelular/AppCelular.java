@@ -1,4 +1,4 @@
-package sistemaestacionamientomedido;
+package appdelcelular;
 
 public class AppCelular {
 	private String numeroCel;

@@ -1,4 +1,4 @@
-package sistemaestacionamientomedido;
+package appdelcelular;
 
 public abstract class ModoApp {
 
