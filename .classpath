@@ -14,9 +14,9 @@
 	<classpathentry kind="lib" path="lib/Mockito_v3.3.12_and_deps/byte-buddy-agent-1.10.10.jar"/>
 	<classpathentry kind="lib" path="lib/Mockito_v3.3.12_and_deps/byte-buddy-agent-1.10.10-javadoc.jar"/>
 	<classpathentry kind="lib" path="lib/Mockito_v3.3.12_and_deps/byte-buddy-agent-1.10.10-sources.jar"/>
-	<classpathentry kind="lib" path="lib/Mockito_v3.3.12_and_deps/mockito-core-3.3.12.jar"/>
-	<classpathentry kind="lib" path="lib/Mockito_v3.3.12_and_deps/mockito-core-3.3.12-javadoc.jar"/>
-	<classpathentry kind="lib" path="lib/Mockito_v3.3.12_and_deps/mockito-core-3.3.12-sources.jar"/>
+	<classpathentry exported="true" kind="lib" path="lib/Mockito_v3.3.12_and_deps/mockito-core-3.3.12.jar"/>
+	<classpathentry exported="true" kind="lib" path="lib/Mockito_v3.3.12_and_deps/mockito-core-3.3.12-javadoc.jar"/>
+	<classpathentry exported="true" kind="lib" path="lib/Mockito_v3.3.12_and_deps/mockito-core-3.3.12-sources.jar"/>
 	<classpathentry kind="lib" path="lib/Mockito_v3.3.12_and_deps/objenesis-3.1.jar"/>
 	<classpathentry kind="lib" path="lib/Mockito_v3.3.12_and_deps/objenesis-3.1-javadoc.jar"/>
 	<classpathentry kind="lib" path="lib/Mockito_v3.3.12_and_deps/objenesis-3.1-sources.jar"/>
