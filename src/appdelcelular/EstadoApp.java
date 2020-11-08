@@ -1,9 +1,9 @@
 package appdelcelular;
 
-public abstract class ModoApp {
+public abstract class EstadoApp {
 	private AppCelular appDeReferencia;
 	
-	public ModoApp(AppCelular appRef) {
+	public EstadoApp(AppCelular appRef) {
 		this.setAppDeReferencia(appRef);
 	}
 	
@@ -14,7 +14,7 @@ public abstract class ModoApp {
 	public AppCelular getAppDeReferencia() {
 		return this.appDeReferencia;
 	}
-	
-	protected abstract void posibleInicioDeEstacionamiento();
-	protected abstract void posibleFinDeEstacionamiento();
+		
+	public abstract void driving();
+	public abstract void walking();
 }
