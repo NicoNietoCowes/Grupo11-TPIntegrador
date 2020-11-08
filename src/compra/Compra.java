@@ -1,4 +1,4 @@
-package Compra;
+package compra;
 
 import java.time.chrono.ChronoLocalDate;
 

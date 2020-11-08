@@ -1,7 +1,7 @@
 package puntoDeVenta;
 
 import ZonEstacionamiento;
-import Compra;
+import compra;
 
 public class PuntoDeVenta {
 
