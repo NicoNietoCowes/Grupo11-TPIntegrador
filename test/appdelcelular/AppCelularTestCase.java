@@ -2,13 +2,20 @@ package appdelcelular;
 
 import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.Mockito.*;
+
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-import org.mockito.Mock;
 
 class AppCelularTestCase {
 	private ModoApp manual = mock(ModoManual.class);
 	private ModoApp automatico = mock(ModoAutomatico.class);
+	private EstadoApp manejando = mock(Manejando.class);
 	private AppCelular app = new AppCelular("1130949597", "MYX520", manual);
+	
+	@BeforeEach
+	public void setUp() {
+		app.cambiarEstado(manejando);
+	}
 	
 	@Test
 	void testGettersBasicosAppNroCelular() {
@@ -76,5 +83,40 @@ class AppCelularTestCase {
 	void testEnvioDeMensajePosibleFinEst() {
 		app.posibleFinDeEstacionamiento();
 		verify(manual).posibleFinDeEstacionamiento();
+	}
+	
+	@Test
+	void testGetEstadoAppLuegoDeCambiarlo() {
+		assertEquals(manejando, app.getEstado());
+	}
+	
+	@Test
+	void testDriving() {
+		app.driving();
+		verify(manejando).driving();
+	}
+	
+	@Test
+	void testWalking() {
+		app.walking();
+		verify(manejando).walking();
+	}
+	
+	
+	/** TESTS INCOMPLETOS, FALTAN IMPLEMENTAR LOS ESTACIONAMIENTOS */
+	@Test
+	void testInicioDeEstacionamientoSinCredito() {
+		assertEquals("Saldo insuficiente. Estacionamiento no permitido", app.inicioDeEstacionamiento());
+	}
+	
+	@Test
+	void testInicioDeEstacionamientoConCredito() {
+		app.cargarCredito(400d);
+		assertEquals("Datos relevantes con respecto al estacionamiento generado", app.inicioDeEstacionamiento());
+	}
+	
+	@Test
+	void testFinDeEstacionamiento() {
+		assertEquals("combinacion de atributos correspondientes al estacionamiento", app.finDeEstacionamiento());
 	}
 }

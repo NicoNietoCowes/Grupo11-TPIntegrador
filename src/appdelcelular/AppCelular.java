@@ -9,9 +9,9 @@ public class AppCelular implements MovementSensor {
 	private String patente;
 	private double creditoDisponible = 0;
 	private ModoApp modoApp;
-	private EstadoApp estado;
-	// private EstViaApp estacionamiento;
-	// private ZonaDeEstacionamiento localizacion;
+	private EstadoApp estado = new Caminando(this); // Se inicia la app con algún estado x, luego va cambiando en tiempo real.
+	// TODO: private EstViaApp estacionamiento;
+	// TODO: private ZonaDeEstacionamiento localizacion;
 	private ArrayList<String> notificaciones;
 	
 	/** Cuando se crea una AppCelular se indica el número de celular
@@ -27,7 +27,7 @@ public class AppCelular implements MovementSensor {
 	public String inicioDeEstacionamiento() {
 		String notificacion;
 		if (this.getCreditoDisponible() > 0) {
-			/** EstViaApp nuevoEstacionamiento = new EstViaApp(
+			/** TODO: EstViaApp nuevoEstacionamiento = new EstViaApp(
 			 * this.getPatente(), LocalTime.now(), this.getNumeroCel(), this.getCreditoDisponible());
 			 * 
 			 * */
@@ -41,7 +41,7 @@ public class AppCelular implements MovementSensor {
 	}
 	
 	public String finDeEstacionamiento() {
-		// sem.finalizarEstacionamiento(this.getEstacionamiento);
+		// TODO: sem.finalizarEstacionamiento(this.getEstacionamiento);
 		return "combinacion de atributos correspondientes al estacionamiento";
 	}
 	
@@ -79,10 +79,10 @@ public class AppCelular implements MovementSensor {
 		this.modoApp = modoNuevo;
 	}
 
-	/** public boolean tieneEstacionamientoVigente() {
+	/** TODO: public boolean tieneEstacionamientoVigente() {
 	 * return this.getEstacionamiento() != null || this.getEstacionamiento.estaVigente(); } */
 	
-	/** public boolean seEncuentraEnZonaEst() {
+	/** TODO: public boolean seEncuentraEnZonaEst() {
 	 * return this.localizacion != null;
 	 * } */
 	
