@@ -2,12 +2,12 @@ package compra;
 
 import java.time.chrono.ChronoLocalDate;
 
-public class Compra {
+public class Compra extends puntoDeVenta.PuntoDeVenta {
 
 	private int nroControl;
 	private ChronoLocalDate fechaYHora;
 	
-	public void realizarCompra() {
-		
+	protected void realizarCompra() {
+		//se delega a las subclases
 	}
 }
