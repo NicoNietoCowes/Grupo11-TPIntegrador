@@ -1,5 +1,7 @@
 package compra;
 
+import java.time.chrono.ChronoLocalDate;
+
 import appdelcelular.AppCelular;
 
 public class RecargaCelular extends Compra {
@@ -7,8 +9,15 @@ public class RecargaCelular extends Compra {
 	private String numeroCel;
 	double monto;
 	
+	public RecargaCelular(int nroControl, ChronoLocalDate fechaYHora, String nombreComercio,
+						  String numeroCel, double monto) {
+		super(nroControl, fechaYHora, nombreComercio);
+		this.numeroCel = numeroCel;
+		this.monto = monto;
+	}
+	
 	@Override
-	public realizarCompra() {
+	public void realizarCompra(AppCelular celu) {
 		celu.cargarCredito(monto);
 		this.monto = 0;
 	}

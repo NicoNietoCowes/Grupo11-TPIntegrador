@@ -6,6 +6,10 @@ public class PuntoDeVenta {
 
 	private String nombreComercio;
 	
+	public PuntoDeVenta(String nombreComercio) {
+		this.nombreComercio = nombreComercio;
+	}
+	
 	public void registrarCompra(Compra compra) {
 		this.registrarCompraSiYaFueHecha(compra);
 	}

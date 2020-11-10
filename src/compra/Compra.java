@@ -7,7 +7,13 @@ public class Compra extends puntoDeVenta.PuntoDeVenta {
 	int nroControl;
 	ChronoLocalDate fechaYHora;
 	
-	protected void realizarCompra() {
+	public Compra(int nroControl, ChronoLocalDate fechaYHora, String nombreComercio) {
+		super(nombreComercio);
+		this.fechaYHora = fechaYHora;
+		this.nroControl = nroControl;
+	}
+	
+	protected void realizarCompra(AppCelular celu) {
 		//se delega a las subclases
 	}
 	
