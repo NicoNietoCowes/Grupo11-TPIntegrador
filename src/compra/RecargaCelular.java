@@ -7,19 +7,20 @@ import appdelcelular.AppCelular;
 public class RecargaCelular extends Compra {
 
 	private String numeroCel;
-	double monto;
+	private double monto;
 	
 	public RecargaCelular(int nroControl, ChronoLocalDate fechaYHora, String nombreComercio,
 						  String numeroCel, double monto) {
 		super(nroControl, fechaYHora, nombreComercio);
-		this.numeroCel = numeroCel;
-		this.monto = monto;
+		this.cambiarNumeroCelu(numeroCel);
+		this.cambiaMonto(monto);
 	}
 	
 	@Override
-	public void realizarCompra(AppCelular celu) {
-		celu.cargarCredito(monto);
-		this.monto = 0;
+	public void realizarCompra() {
+		public RecargaCelular recarga = new RecargaCelular(numeroCel, monto);
+		SEM.registrarCompra(recarga);
+		this.cambiaMonto(0);
 	}
 	
 	public String getNumeroCelular() {

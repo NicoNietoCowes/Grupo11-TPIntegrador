@@ -5,18 +5,19 @@ import java.time.chrono.ChronoLocalDate;
 public class HorasPuntuales extends Compra {
 	
 	private String patenteAuto;
-	int cantHoras;
+	private int cantHoras;
 	
 	public HorasPuntuales(int nroControl, ChronoLocalDate fechaYHora, String nombreComercio,
 			               String patenteAuto, int cantHoras) {
 		super(nroControl, fechaYHora, nombreComercio);
-		this.patenteAuto = patenteAuto;
-		this.cantHoras = cantHoras;
+		this.cambioPatente(patenteAuto);
+		this.setHoras(cantHoras);
 	}
 	
 	@Override
-	public void realizarCompra(AppCelular celu) {
-		//ver como sacar esto y como no usar celu
+	public void realizarCompra() {
+		public HorasPuntuales HPuntuales = new HorasPuntuales(patenteAuto, cantHoras);
+		SEM.registrarCompra(HPuntuales);
 	}
 	
 	public String getPatenteAuto() {
