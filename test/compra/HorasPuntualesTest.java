@@ -8,6 +8,6 @@ public class HorasPuntualesTest {
 	private Compra horasPuntuales = mock(HorasPuntuales.class);
 	
 	//instancias
-	private Compra compraPuntual = new HorasPuntuales("LYK887", 4);
+	private Compra compraPuntual = new HorasPuntuales(0, null, "LYK887", null, 4);
 	
 }

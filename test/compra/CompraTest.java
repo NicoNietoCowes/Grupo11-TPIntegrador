@@ -11,7 +11,7 @@ public class CompraTest {
 	private Compra horasPuntuales = mock(HorasPuntuales.class);
 	
 	//instancias
-	private Compra recargando = new RecargaCelular("1169540055", 200);
-	private Compra compraPuntual = new HorasPuntuales("LYK887", 4);
+	private Compra recargando = new RecargaCelular(0, null, "1169540055", null, 200);
+	private Compra compraPuntual = new HorasPuntuales(0, null, "LYK887", null, 4);
 	
 }

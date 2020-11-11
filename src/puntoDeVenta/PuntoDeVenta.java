@@ -1,6 +1,7 @@
 package puntoDeVenta;
 
 import compra.Compra;
+import zonaDeEstacionamiento.ZonaDeEstacionamiento;
 
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -16,7 +17,7 @@ public class PuntoDeVenta {
 		this.registrarCompraSiYaFueHecha(compra);
 	}
 	
-	private String getZona(ZonaEstacionamiento zonaE) {
+	private String getZona(ZonaDeEstacionamiento zonaE) {
 		return zonaE.nombre();
 	}
 	
