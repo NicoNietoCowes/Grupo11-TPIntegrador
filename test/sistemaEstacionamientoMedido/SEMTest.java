@@ -9,12 +9,17 @@ import java.util.ArrayList;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
+import compra.Compra;
+import estacionamiento.Estacionamiento;
+import infraccion.Infraccion;
 import puntoDeVenta.PuntoDeVenta;
 
 class SEMTest {
 
 	private SEM sem;
-	
+	private Estacionamiento estacionamiento = mock(Estacionamiento.class);
+	private Compra compra = mock(Compra.class);
+	private Infraccion infraccion = mock(Infraccion.class);
 	
 	@BeforeEach
 	void setUp() throws Exception {
@@ -23,8 +28,23 @@ class SEMTest {
 	}
 
 	@Test
-	void test() {
-		fail("Not yet implemented");
+	void testGetComienzoFranjaHoraria() {
+		assertEquals(LocalTime.of(07,00),sem.getComienzoFranjaHoraria());
+	}
+	
+	@Test
+	void testGetFinFranjaHoraria() {
+		assertEquals(LocalTime.of(20,00),sem.getFinFranjaHoraria());
+	}
+	
+	@Test
+	void testGetPrecioPorHora() {
+		assertEquals(40.00, sem.getPrecioPorHora());
+	}
+	
+	@Test
+	void testEmitirAltaInfraccion() {
+		assertEquals(1, sem.());
 	}
 
 }

@@ -32,6 +32,22 @@ public class SEM {
 		
 	}
 
+	public void registrarCompra(Compra compra) {
+		compras.add(compra);
+	}
+
+	public LocalTime getComienzoFranjaHoraria() {
+		return comienzoFranjaHoraria;
+	}
+
+	public LocalTime getFinFranjaHoraria() {
+		return finFranjaHoraria;
+	}
+
+	public Double getPrecioPorHora() {
+		return precioPorHora;
+	}
+	
 	public Boolean consultarEstacionamientoVigente(String patente, Inspector inspector) {
 		return true;
 		
@@ -41,10 +57,5 @@ public class SEM {
 		Infraccion infraccion = new Infraccion(patente, fechaYHora, inspector);
 		infracciones.add(infraccion);
 	}
-
-	public void registrarCompra(Compra compra) {
-		compras.add(compra);
-	}
-	
 
 }
