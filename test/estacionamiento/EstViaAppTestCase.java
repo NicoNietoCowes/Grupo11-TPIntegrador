@@ -13,12 +13,14 @@ import zonaDeEstacionamiento.ZonaDeEstacionamiento;
 
 class EstViaAppTestCase {
 	private EstViaApp estacionamientoApp1;
+	private EstViaApp estacionamientoApp2;
 	private ZonaDeEstacionamiento bernal = mock(ZonaDeEstacionamiento.class);
 	private SEM sem = mock(SEM.class);
 	
 	@BeforeEach
 	void setUp() throws Exception {
 	 estacionamientoApp1 = new EstViaApp("MYX520", "1130949597", LocalTime.of(15, 00), bernal, 120, sem);
+	 estacionamientoApp2 = new EstViaApp("ABD123", "1130949592", LocalTime.of(19, 00), bernal, 90, sem);
 	 // 40 pesos es equivalente a 60 créditos ($1:1.5crédito)
 	}
 	
@@ -48,7 +50,12 @@ class EstViaAppTestCase {
 	}
 	
 	@Test
-	void testHoraFin() {
+	void testHoraFinConCredito() {
 		assertEquals(LocalTime.of(17, 00), estacionamientoApp1.horaFin());
+	}
+	
+	@Test
+	void testHoraFinConFranjaHoraria() {
+		assertEquals(LocalTime.of(20, 00), estacionamientoApp2.horaFin());
 	}
 }

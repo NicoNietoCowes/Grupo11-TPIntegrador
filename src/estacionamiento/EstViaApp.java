@@ -25,7 +25,7 @@ public class EstViaApp extends Estacionamiento {
 	
 	@Override
 	public LocalTime horaFin() {
-		// TODO Auto-generated method stub
+		
 		return null;
 	}
 
