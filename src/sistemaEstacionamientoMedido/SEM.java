@@ -1,15 +1,37 @@
 package sistemaEstacionamientoMedido;
 
 import java.time.LocalDateTime;
+import java.time.LocalTime;
 import java.util.ArrayList;
 
+import compra.Compra;
+import estacionamiento.Estacionamiento;
 import infraccion.Infraccion;
 import inspector.Inspector;
+import puntoDeVenta.PuntoDeVenta;
 
 public class SEM {
 
-	private ArrayList<Infraccion> infracciones = new ArrayList<Infraccion>();
+	private LocalTime comienzoFranjaHoraria;
+	private LocalTime finFranjaHoraria;
+	private Double precioPorHora;
+	private ArrayList<Infraccion> infracciones;
+	private ArrayList<PuntoDeVenta> puntosDeVenta;
+	private ArrayList<Compra> compras;
+	private ArrayList<Estacionamiento> estacionamientos;
 	
+	
+	public SEM(LocalTime cfh, LocalTime ffh, Double p) {
+		comienzoFranjaHoraria = cfh;
+		finFranjaHoraria = ffh;
+		precioPorHora = p;
+		infracciones = new ArrayList<Infraccion>();
+		puntosDeVenta = new ArrayList<PuntoDeVenta>();
+		compras = new ArrayList<Compra>();
+		estacionamientos = new ArrayList<Estacionamiento>();
+		
+	}
+
 	public Boolean consultarEstacionamientoVigente(String patente, Inspector inspector) {
 		return true;
 		
