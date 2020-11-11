@@ -28,6 +28,14 @@ public class ZonaDeEstacionamiento {
 	public Object getInspector() {
 		return inspector;
 	}
+	
+	public String nombre() {
+		return nombre;
+	}
+	
+	public void setNombre(String nombre) {
+		this.nombre = nombre;
+	}
 
 /*	public void registrarEstacionamiento(Estacionamiento est) {
 		estacionamientos.add(est);		

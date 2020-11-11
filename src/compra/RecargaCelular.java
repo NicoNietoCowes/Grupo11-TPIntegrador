@@ -21,8 +21,8 @@ public class RecargaCelular extends Compra {
 	@Override
 	public void realizarCompra() {
 		RecargaCelular recarga = new RecargaCelular(nroControl, fechaYHora, numeroCel, numeroCel, monto);
-		SEM.registrarCompra(recarga);
 		this.cambiaMonto(0);
+		//hay que elevarlo a la superclase
 	}
 	
 	public String getNumeroCelular() {
