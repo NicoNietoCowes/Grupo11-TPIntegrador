@@ -8,12 +8,11 @@ import puntoDeVenta.PuntoDeVenta;
 public class ZonaDeEstacionamiento {
 
 	private String nombre;
-	//ArrayList<Estacionamiento> estacionamientos = new ArrayList<Estacionamiento>();
 	private Inspector inspector;
 	private ArrayList<PuntoDeVenta> puntosDeVenta = new ArrayList<PuntoDeVenta>();
 	
 	public ZonaDeEstacionamiento(String s, Inspector insp) {
-		nombre = s;
+		this.setNombre(s);
 		inspector = insp;
 	}
 
@@ -36,9 +35,4 @@ public class ZonaDeEstacionamiento {
 	public void setNombre(String nombre) {
 		this.nombre = nombre;
 	}
-
-/*	public void registrarEstacionamiento(Estacionamiento est) {
-		estacionamientos.add(est);		
-	}
-*/
 }
