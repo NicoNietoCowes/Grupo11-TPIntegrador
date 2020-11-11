@@ -2,14 +2,15 @@ package estacionamiento;
 
 import java.time.LocalTime;
 
+import sistemaEstacionamientoMedido.SEM;
 import zonaDeEstacionamiento.ZonaDeEstacionamiento;
 
 public class EstViaApp extends Estacionamiento {
 	private String nroCelular;
-	private double creditoEst;
+	private Integer creditoEst;
 	
-	public EstViaApp(String patente, String celular, LocalTime horaInicio, ZonaDeEstacionamiento zona, double credito) {
-		super(patente, horaInicio, zona);
+	public EstViaApp(String patente, String celular, LocalTime horaInicio, ZonaDeEstacionamiento zona, Integer credito, SEM sem) {
+		super(patente, horaInicio, zona, sem);
 		this.setNroCelular(celular);
 		this.setCredito(credito);
 	}
@@ -18,10 +19,10 @@ public class EstViaApp extends Estacionamiento {
 		this.nroCelular = nroCelu;
 	}
 	
-	private void setCredito(double credito) {
+	private void setCredito(Integer credito) {
 		this.creditoEst = credito;
 	}
-
+	
 	@Override
 	public LocalTime horaFin() {
 		// TODO Auto-generated method stub
@@ -32,6 +33,10 @@ public class EstViaApp extends Estacionamiento {
 	public boolean estaVigente() {
 		// TODO Auto-generated method stub
 		return false;
+	}
+
+	public String getNroCelular() {
+		return this.nroCelular;
 	}
 
 }
