@@ -11,7 +11,7 @@ import org.junit.jupiter.api.Test;
 import sistemaEstacionamientoMedido.SEM;
 import zonaDeEstacionamiento.ZonaDeEstacionamiento;
 
-class EstViaAppTestCase {
+class EstViaAppTest {
 	private EstViaApp estacionamientoApp1;
 	private EstViaApp estacionamientoApp2;
 	private ZonaDeEstacionamiento bernal = mock(ZonaDeEstacionamiento.class);
@@ -22,6 +22,7 @@ class EstViaAppTestCase {
 	 estacionamientoApp1 = new EstViaApp("MYX520", "1130949597", LocalTime.of(15, 00), bernal, 120, sem);
 	 estacionamientoApp2 = new EstViaApp("ABD123", "1130949592", LocalTime.of(19, 00), bernal, 90, sem);
 	 // 40 pesos es equivalente a 60 créditos ($1:1.5crédito)
+	 when(sem.getFinFranjaHoraria()).thenReturn(LocalTime.of(20, 00));
 	}
 	
 	@Test
@@ -50,12 +51,24 @@ class EstViaAppTestCase {
 	}
 	
 	@Test
-	void testHoraFinConCredito() {
-		assertEquals(LocalTime.of(17, 00), estacionamientoApp1.horaFin());
+	void testEstaVigente() {
+		assertTrue(estacionamientoApp1.estaVigente(LocalTime.of(15,31)));
 	}
 	
 	@Test
-	void testHoraFinConFranjaHoraria() {
-		assertEquals(LocalTime.of(20, 00), estacionamientoApp2.horaFin());
+	void testFinalizarEstacionamiento() {
+		estacionamientoApp1.finalizarEstacionamiento(LocalTime.of(15, 30));
+		assertFalse(estacionamientoApp1.estaVigente(LocalTime.of(15,31)));
 	}
+	
+	@Test
+	void testCreditoInsuficiente() {
+		assertFalse(estacionamientoApp1.estaVigente(LocalTime.of(17,01)));
+	}
+	
+	@Test
+	void testFinFranjaHoraria() {
+		assertFalse(estacionamientoApp2.estaVigente(LocalTime.of(20,01)));
+	}
+	
 }
