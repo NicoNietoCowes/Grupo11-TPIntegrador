@@ -2,6 +2,7 @@ package puntoDeVenta;
 
 import static org.mockito.Mockito.*;
 import compra.Compra;
+import sistemaEstacionamientoMedido.SEM;
 import zonaDeEstacionamiento.ZonaDeEstacionamiento;
 
 import static org.junit.jupiter.api.Assertions.*;
@@ -15,7 +16,7 @@ public class PuntoDeVenta {
 	}
 	
 	public void registrarCompra(Compra compra) {
-		this.registrarCompraSiYaFueHecha(compra);
+		SEM.registrarCompra(compra);
 	}
 	
 	private String getZona(ZonaDeEstacionamiento zonaE) {
@@ -28,9 +29,5 @@ public class PuntoDeVenta {
 	
 	public void setComercio(String comercio) {
 		this.nombreComercio = comercio;
-	}
-	
-	public registrarCompraSiYaFueHecha(Compra compra) {
-		return compra.seRealizoConExito();
 	}
 }

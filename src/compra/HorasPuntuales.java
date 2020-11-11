@@ -19,7 +19,7 @@ public class HorasPuntuales extends Compra {
 	@Override
 	public void realizarCompra() {
 		HorasPuntuales HPuntuales = new HorasPuntuales(cantHoras, fechaYHora, patenteAuto, patenteAuto, cantHoras);
-		SEM.registrarCompra(HPuntuales);
+		//Hay que elevarlo a la superclase
 	}
 	
 	public String getPatenteAuto() {

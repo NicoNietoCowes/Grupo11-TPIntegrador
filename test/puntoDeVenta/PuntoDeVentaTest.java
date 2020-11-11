@@ -20,13 +20,6 @@ public class PuntoDeVentaTest {
 	private PuntoDeVenta lugar = new PuntoDeVenta("Maxikiosco Pepe");
 	private RecargaCelular recargando = new RecargaCelular(1, null, "ciber","1169540055", 200);
 	
-	//@BeforeEach
-	//void setUp() throws Exception {
-		
-//		zona1.añadirPuntoDeVenta(puntoDeVenta1);
-//		zona1.añadirPuntoDeVenta(puntoDeVenta2);
-	//}
-	
 	
 	@Test
 	void testeandoNombreLocal() {

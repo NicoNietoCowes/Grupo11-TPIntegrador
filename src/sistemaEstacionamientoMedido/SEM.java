@@ -41,6 +41,10 @@ public class SEM {
 		Infraccion infraccion = new Infraccion(patente, fechaYHora, inspector);
 		infracciones.add(infraccion);
 	}
+
+	public void registrarCompra(Compra compra) {
+		compras.add(compra);
+	}
 	
 
 }

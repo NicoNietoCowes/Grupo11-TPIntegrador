@@ -16,14 +16,6 @@ public class Compra extends puntoDeVenta.PuntoDeVenta {
 	}
 	
 	protected void realizarCompra() {
-		//se delega a la subclase correspondiente
-	}
-	
-	public Boolean seRealizoConExito() {
-		if (double monto = 0) { //chequear como poder ver el atributo de la subclase
-			return true;
-		}
-		else {return false;
-		}
+	 //delegado a las subclases
 	}
 }
