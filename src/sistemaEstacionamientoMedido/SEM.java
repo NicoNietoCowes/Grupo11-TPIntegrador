@@ -76,4 +76,19 @@ public class SEM {
 		return this.compras;
 	}
 
+	public void finalizarEstacionamiento(Estacionamiento estacionamientoAFinalizar) {
+		// prec: el estacionamientoAFinalizar tiene que estar en la lista.
+		this.estacionamientos.remove(estacionamientoAFinalizar);
+	}
+
+	public ArrayList<Estacionamiento> getEstacionamientos() {
+		return this.estacionamientos;
+	}
+
+	public void finalizarTodosLosEstacionamientos(LocalTime horaDeFin) {
+		if (horaDeFin.isAfter(this.getFinFranjaHoraria().minusMinutes(1))) {
+			this.getEstacionamientos().clear();
+		}
+		
+	}
 }

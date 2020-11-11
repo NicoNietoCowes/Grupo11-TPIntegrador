@@ -80,5 +80,23 @@ class SEMTest {
 	void testPatenteNoRegistradaConEstacionamiento() {
 		assertFalse(sem.tieneEstacionamientoVigente("ABC123", inspector, LocalTime.of(14, 30)));
 	}
+		
+	@Test
+	void testFinalizarUnEstacionamiento() {
+		assertEquals(1, sem.getEstacionamientos().size());
+		sem.finalizarEstacionamiento(estacionamiento);
+		assertTrue(sem.getEstacionamientos().isEmpty());
+	}
 	
+	@Test 
+	void testFinalizarTodosLosEstacionamientosAntesDelFin() {
+		sem.finalizarTodosLosEstacionamientos(LocalTime.of(19, 30));
+		assertEquals(1, sem.getEstacionamientos().size());
+	}
+	
+	@Test 
+	void testFinalizarTodosLosEstacionamientosDespuesDelFin() {
+		sem.finalizarTodosLosEstacionamientos(LocalTime.of(20, 00));
+		assertTrue(sem.getEstacionamientos().isEmpty());
+	}
 }

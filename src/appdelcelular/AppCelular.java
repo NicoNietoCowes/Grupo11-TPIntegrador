@@ -2,25 +2,31 @@ package appdelcelular;
 
 import java.util.ArrayList;
 
+import estacionamiento.EstViaApp;
+import sistemaEstacionamientoMedido.SEM;
+import zonaDeEstacionamiento.ZonaDeEstacionamiento;
+
 // import java.time.LocalTime;
 
 public class AppCelular implements MovementSensor {
 	private String numeroCel;
 	private String patente;
-	private double creditoDisponible = 0;
+	private Integer creditoDisponible = 0;
 	private ModoApp modoApp;
 	private EstadoApp estado = new Caminando(this); // Se inicia la app con algún estado x, luego va cambiando en tiempo real.
-	// TODO: private EstViaApp estacionamiento;
-	// TODO: private ZonaDeEstacionamiento localizacion;
+	private EstViaApp estacionamiento;
+	private ZonaDeEstacionamiento localizacion;
+	private SEM sem;
 	private ArrayList<String> notificaciones;
 	
 	/** Cuando se crea una AppCelular se indica el número de celular
 	 * y la patente del usuario junto con el modo de inicio 
 	 * (manual o automático) que luego puede ser modificado. */
-	public AppCelular(String nroCel, String patente, ModoApp modo) {
+	public AppCelular(String nroCel, String patente, ModoApp modo, SEM sem) {
 		this.setNumeroCel(nroCel);
 		this.setPatente(patente);
 		this.cambiarModo(modo);
+		this.sem = sem;
 		this.notificaciones = new ArrayList<String>();
 	}
 	
@@ -51,11 +57,11 @@ public class AppCelular implements MovementSensor {
 				+ this.getCreditoDisponible();
 	}
 	
-	public void cargarCredito(double monto) {
+	public void cargarCredito(Integer monto) {
 		this.creditoDisponible =+ monto;
 	}
 	
-	public double getCreditoDisponible() {
+	public Integer getCreditoDisponible() {
 		return this.creditoDisponible;
 	}
  
