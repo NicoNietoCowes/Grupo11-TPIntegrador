@@ -18,22 +18,35 @@ public class PuntoDeVentaTest {
 	
 	//instancias
 	private PuntoDeVenta lugar = new PuntoDeVenta("Maxikiosco Pepe");
+	private RecargaCelular recargando = new RecargaCelular(1, null, "ciber","1169540055", 200);
 	
-	@BeforeEach
-	void setUp() throws Exception {
-		zona1 = new ZonaDeEstacionamiento();
+	//@BeforeEach
+	//void setUp() throws Exception {
+		
 //		zona1.añadirPuntoDeVenta(puntoDeVenta1);
 //		zona1.añadirPuntoDeVenta(puntoDeVenta2);
-	}
+	//}
 	
 	
 	@Test
-	void test() {
-		assertEquals();
+	void testeandoNombreLocal() {
+		assertEquals(lugar.getComercio(), "Maxikiosco Pepe");
 	}
 
-/*	@Test
-	void test() {
+	@Test
+	void testeandoLaRecargaSiEsEnMismoLugar() {
+		assertEquals(recargando.getComercio(), "ciber");
 	}
-*/
+	
+	@Test
+	void testeandoCantidadDeRecarga() {
+		assertEquals(recargando.getMonto(), 200);
+	}
+	
+	@Test
+	void testQuePasaSiCambioLugarDeRecarga() {
+		assertEquals(lugar.getComercio(), "Maxikiosco Pepe");
+		lugar.setComercio("ciber");
+		assertEquals(lugar.getComercio(), "ciber");
+	}
 }
