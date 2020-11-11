@@ -8,7 +8,7 @@ import compra.Compra;
 import estacionamiento.Estacionamiento;
 import infraccion.Infraccion;
 import inspector.Inspector;
-import puntoDeVenta.PuntoDeVenta;
+import zonaDeEstacionamiento.ZonaDeEstacionamiento;
 
 public class SEM {
 
@@ -16,7 +16,7 @@ public class SEM {
 	private LocalTime finFranjaHoraria;
 	private Double precioPorHora;
 	private ArrayList<Infraccion> infracciones;
-	private ArrayList<PuntoDeVenta> puntosDeVenta;
+	private ArrayList<ZonaDeEstacionamiento> zonasDeEstacionamiento;
 	private ArrayList<Compra> compras;
 	private ArrayList<Estacionamiento> estacionamientos;
 	
@@ -26,7 +26,7 @@ public class SEM {
 		finFranjaHoraria = ffh;
 		precioPorHora = p;
 		infracciones = new ArrayList<Infraccion>();
-		puntosDeVenta = new ArrayList<PuntoDeVenta>();
+		zonasDeEstacionamiento = new ArrayList<ZonaDeEstacionamiento>();
 		compras = new ArrayList<Compra>();
 		estacionamientos = new ArrayList<Estacionamiento>();
 		
@@ -48,14 +48,16 @@ public class SEM {
 		return precioPorHora;
 	}
 	
-	public Boolean consultarEstacionamientoVigente(String patente, Inspector inspector) {
+	public Boolean tieneEstacionamientoVigente(String patente, Inspector inspector) {
 		return true;
-		
 	}
 
-	public void emitirAltaDeInfraccion(String patente, Inspector inspector, LocalDateTime fechaYHora) {
-		Infraccion infraccion = new Infraccion(patente, fechaYHora, inspector);
+	public void registrarInfraccion(Infraccion infraccion) {
 		infracciones.add(infraccion);
+	}
+
+	public ArrayList<Infraccion> getInfracciones() {
+		return infracciones;
 	}
 
 }

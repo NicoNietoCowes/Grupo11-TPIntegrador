@@ -2,6 +2,7 @@ package inspector;
 
 import java.time.LocalDateTime;
 
+import infraccion.Infraccion;
 import sistemaEstacionamientoMedido.SEM;
 import zonaDeEstacionamiento.ZonaDeEstacionamiento;
 
@@ -29,13 +30,14 @@ public class Inspector {
 		return zonaACargo;
 	}
 
-	public void consultarEstacionamientoVigente(String patente, SEM sem) {
-		sem.consultarEstacionamientoVigente(patente, this);	
+	public Boolean tieneEstacionamientoVigente(String patente, SEM sem) {
+		return sem.tieneEstacionamientoVigente(patente, this);	
 	}
 
 	public void emitirAltaDeInfraccion(String patente, SEM sem, LocalDateTime fechaYHora) {
-		if (sem.consultarEstacionamientoVigente(patente, this) == false) {
-			sem.emitirAltaDeInfraccion(patente, this, fechaYHora);
+		if (! this.tieneEstacionamientoVigente(patente, sem)) {
+			Infraccion infraccion = new Infraccion(patente, fechaYHora, this);
+			sem.registrarInfraccion(infraccion);
 		}
 	}
 }

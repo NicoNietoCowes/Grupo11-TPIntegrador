@@ -42,14 +42,14 @@ class InspectorTest {
 	
 	@Test
 	void testconsultarEstacionamientoVigente() {
-		inspector.consultarEstacionamientoVigente("ABC123", sem);
-		verify(sem).consultarEstacionamientoVigente("ABC123", inspector);
+		inspector.tieneEstacionamientoVigente("ABC123", sem);
+		verify(sem).tieneEstacionamientoVigente("ABC123", inspector);
 	}
 	
 	@Test
 	void testemitirAltaDeInfraccion() {
 		inspector.emitirAltaDeInfraccion("ABC123", sem, LocalDateTime.of(2020, 11, 10, 19, 05));
-		verify(sem).emitirAltaDeInfraccion("ABC123", inspector, LocalDateTime.of(2020, 11, 10, 19, 05));
+		verify(sem).tieneEstacionamientoVigente("ABC123", inspector);
 	}
 	
 

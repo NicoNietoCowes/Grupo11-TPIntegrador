@@ -12,7 +12,7 @@ import org.junit.jupiter.api.Test;
 import compra.Compra;
 import estacionamiento.Estacionamiento;
 import infraccion.Infraccion;
-import puntoDeVenta.PuntoDeVenta;
+import zonaDeEstacionamiento.ZonaDeEstacionamiento;
 
 class SEMTest {
 
@@ -20,6 +20,7 @@ class SEMTest {
 	private Estacionamiento estacionamiento = mock(Estacionamiento.class);
 	private Compra compra = mock(Compra.class);
 	private Infraccion infraccion = mock(Infraccion.class);
+	private ZonaDeEstacionamiento zona1 = mock(ZonaDeEstacionamiento.class);
 	
 	@BeforeEach
 	void setUp() throws Exception {
@@ -43,8 +44,10 @@ class SEMTest {
 	}
 	
 	@Test
-	void testEmitirAltaInfraccion() {
-		assertEquals(1, sem.());
+	void testRegistrarInfraccionYGetInfraccion() {
+		sem.registrarInfraccion(infraccion);
+		
+		assertEquals(1, sem.getInfracciones().size());
 	}
 
 }
