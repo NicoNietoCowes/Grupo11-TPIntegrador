@@ -52,5 +52,5 @@ public abstract class Estacionamiento {
 	
 	public abstract LocalTime horaFin();
 	
-	public abstract boolean estaVigente();
+	public abstract boolean estaVigente(LocalTime horaActual);
 }
