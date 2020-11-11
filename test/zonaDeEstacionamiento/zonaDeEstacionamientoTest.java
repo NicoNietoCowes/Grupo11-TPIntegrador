@@ -3,8 +3,6 @@ package zonaDeEstacionamiento;
 import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.Mockito.*;
 
-import java.time.LocalTime;
-
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
@@ -25,7 +23,6 @@ class zonaDeEstacionamientoTest {
 		zona1.añadirPuntoDeVenta(puntoDeVenta2);
 	}
 	
-	
 	@Test
 	void testgetInspector() {
 		assertEquals(inspectorZona1, zona1.getInspector());
@@ -36,4 +33,9 @@ class zonaDeEstacionamientoTest {
 		assertEquals(2, zona1.getPuntosDeVenta().size());
 	}
 
+	@Test
+	void testGetNombre() {
+		assertEquals("Zona 1", zona1.nombre());
+	}
+	
 }
