@@ -1,5 +1,6 @@
 package puntoDeVenta;
 
+import static org.mockito.Mockito.*;
 import compra.Compra;
 import zonaDeEstacionamiento.ZonaDeEstacionamiento;
 
