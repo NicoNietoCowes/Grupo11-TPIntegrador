@@ -1,6 +1,7 @@
 package compra;
 
 import java.time.chrono.ChronoLocalDate;
+import static org.junit.jupiter.api.Assertions.*;
 
 import appdelcelular.AppCelular;
 
@@ -18,7 +19,7 @@ public class RecargaCelular extends Compra {
 	
 	@Override
 	public void realizarCompra() {
-		public RecargaCelular recarga = new RecargaCelular(numeroCel, monto);
+		RecargaCelular recarga = new RecargaCelular(nroControl, fechaYHora, numeroCel, numeroCel, monto);
 		SEM.registrarCompra(recarga);
 		this.cambiaMonto(0);
 	}

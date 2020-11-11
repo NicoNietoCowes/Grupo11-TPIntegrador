@@ -1,6 +1,7 @@
 package compra;
 
 import java.time.chrono.ChronoLocalDate;
+import static org.junit.jupiter.api.Assertions.*;
 
 public class HorasPuntuales extends Compra {
 	
@@ -16,7 +17,7 @@ public class HorasPuntuales extends Compra {
 	
 	@Override
 	public void realizarCompra() {
-		public HorasPuntuales HPuntuales = new HorasPuntuales(patenteAuto, cantHoras);
+		HorasPuntuales HPuntuales = new HorasPuntuales(cantHoras, fechaYHora, patenteAuto, patenteAuto, cantHoras);
 		SEM.registrarCompra(HPuntuales);
 	}
 	

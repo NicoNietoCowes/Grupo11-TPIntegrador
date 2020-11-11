@@ -1,11 +1,12 @@
 package compra;
 
 import java.time.chrono.ChronoLocalDate;
+import static org.junit.jupiter.api.Assertions.*;
 
 public class Compra extends puntoDeVenta.PuntoDeVenta {
 
-	private int nroControl;
-	private ChronoLocalDate fechaYHora;
+	protected int nroControl;
+	protected ChronoLocalDate fechaYHora;
 	
 	public Compra(int nroControl, ChronoLocalDate fechaYHora, String nombreComercio) {
 		super(nombreComercio);

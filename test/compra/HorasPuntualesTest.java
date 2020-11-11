@@ -1,5 +1,7 @@
 package compra;
 
+import static org.junit.jupiter.api.Assertions.*;
+
 public class HorasPuntualesTest {
 
 	//clases

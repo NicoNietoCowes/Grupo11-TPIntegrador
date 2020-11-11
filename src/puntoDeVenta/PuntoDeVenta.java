@@ -2,6 +2,8 @@ package puntoDeVenta;
 
 import compra.Compra;
 
+import static org.junit.jupiter.api.Assertions.*;
+
 public class PuntoDeVenta {
 
 	private String nombreComercio;
