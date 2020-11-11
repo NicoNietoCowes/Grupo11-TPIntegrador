@@ -12,6 +12,7 @@ class CaminandoEstadoAppTestCase {
 	@Test
 	void testGetApp() {
 		assertEquals(appRef, caminando.getAppDeReferencia());
+		// Corroboro que la app de referencia que tiene el estado es la pasada por parámetro.
 	}
 	
 	@SuppressWarnings("deprecation")
@@ -19,13 +20,18 @@ class CaminandoEstadoAppTestCase {
 	void testNoPasaNadaCuandoElEstadoSigueSiendoCaminando() {
 		caminando.walking();
 		verifyZeroInteractions(appRef);
+		/** Como el estado ya es "caminando", cuando procesa el mensaje .walking no hace nada, por lo tanto 
+		 * no interactúa en ningún punto con la app. */
 	}
 	
 	@Test
 	void testInteraccionConLaAppCuandoSeActualizaElEstadoAManejando() {
 		caminando.driving();
 		verify(appRef).posibleFinDeEstacionamiento();
-		// TODO: como puedo testear la interaccion con el cambio de estado si no tengo referencia a la nueva instancia de EstadoApp que se genera?
+		/** Cuando el estado "caminando" procesa el mensaje .driving corroboro que la app de referencia 
+		 * recibe el mensaje .posibleFinDeEstacionamiento. Además, el estado de la app se modifica, no tengo forma de referenciar
+		 * este nuevo estado que va a ser del tipo EstadoApp, especificamente Manejando (no se me ocurre como hacerlo con mocks, pero
+		 * el .cambiarEstado(nuevoEstado) de la app está testeado en la app propiamente). */
 	}
 	
 }

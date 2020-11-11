@@ -10,6 +10,7 @@ class AppCelularTestCase {
 	private ModoApp manual = mock(ModoManual.class);
 	private ModoApp automatico = mock(ModoAutomatico.class);
 	private EstadoApp manejando = mock(Manejando.class);
+	private EstadoApp caminando = mock(Caminando.class);
 	private AppCelular app = new AppCelular("1130949597", "MYX520", manual);
 	
 	@BeforeEach
@@ -102,6 +103,16 @@ class AppCelularTestCase {
 		verify(manejando).walking();
 	}
 	
+	@Test
+	void testGetEstado() {
+		assertEquals(manejando, app.getEstado());
+	}
+	
+	@Test
+	void testCambioDeEstado() {
+		app.cambiarEstado(caminando);
+		assertEquals(caminando, app.getEstado());
+	}
 	
 	/** TESTS INCOMPLETOS, FALTAN IMPLEMENTAR LOS ESTACIONAMIENTOS */
 	@Test
