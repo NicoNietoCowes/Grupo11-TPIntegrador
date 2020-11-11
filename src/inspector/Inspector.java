@@ -1,6 +1,7 @@
 package inspector;
 
 import java.time.LocalDateTime;
+import java.time.LocalTime;
 
 import infraccion.Infraccion;
 import sistemaEstacionamientoMedido.SEM;
@@ -30,12 +31,12 @@ public class Inspector {
 		return zonaACargo;
 	}
 
-	public Boolean tieneEstacionamientoVigente(String patente, SEM sem) {
-		return sem.tieneEstacionamientoVigente(patente, this);	
+	public Boolean tieneEstacionamientoVigente(String patente, SEM sem, LocalTime horaConsulta) {
+		return sem.tieneEstacionamientoVigente(patente, this, horaConsulta);	
 	}
 
 	public void emitirAltaDeInfraccion(String patente, SEM sem, LocalDateTime fechaYHora) {
-		if (! this.tieneEstacionamientoVigente(patente, sem)) {
+		if (! this.tieneEstacionamientoVigente(patente, sem, fechaYHora.toLocalTime())) {
 			Infraccion infraccion = new Infraccion(patente, fechaYHora, this);
 			sem.registrarInfraccion(infraccion);
 		}

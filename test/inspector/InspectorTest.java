@@ -3,6 +3,7 @@ package inspector;
 import static org.mockito.Mockito.*;
 
 import java.time.LocalDateTime;
+import java.time.LocalTime;
 
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -41,15 +42,15 @@ class InspectorTest {
 	}
 	
 	@Test
-	void testconsultarEstacionamientoVigente() {
-		inspector.tieneEstacionamientoVigente("ABC123", sem);
-		verify(sem).tieneEstacionamientoVigente("ABC123", inspector);
+	void testconsultarEstacionamientoVigenteALas17Hs() {
+		inspector.tieneEstacionamientoVigente("ABC123", sem, LocalTime.of(17, 00));
+		verify(sem).tieneEstacionamientoVigente("ABC123", inspector, LocalTime.of(17, 00));
 	}
 	
 	@Test
 	void testemitirAltaDeInfraccion() {
 		inspector.emitirAltaDeInfraccion("ABC123", sem, LocalDateTime.of(2020, 11, 10, 19, 05));
-		verify(sem).tieneEstacionamientoVigente("ABC123", inspector);
+		verify(sem).tieneEstacionamientoVigente("ABC123", inspector, LocalTime.of(19, 05));
 	}
 	
 

@@ -30,7 +30,7 @@ public class EstViaApp extends Estacionamiento {
 	}
 
 	@Override
-	public boolean estaVigente() {
+	public Boolean estaVigente() {
 		// TODO Auto-generated method stub
 		return false;
 	}

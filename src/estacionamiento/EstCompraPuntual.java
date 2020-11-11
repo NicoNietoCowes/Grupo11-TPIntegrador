@@ -26,7 +26,7 @@ public class EstCompraPuntual extends Estacionamiento {
 	}
 
 	@Override
-	public boolean estaVigente(LocalTime horaActual) {
+	public Boolean estaVigente(LocalTime horaActual) {
 		return horaActual.isBefore(this.horaFin());
 	}
 
