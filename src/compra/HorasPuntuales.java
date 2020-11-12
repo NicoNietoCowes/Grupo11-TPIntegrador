@@ -2,6 +2,9 @@ package compra;
 
 import static org.mockito.Mockito.*;
 import java.time.chrono.ChronoLocalDate;
+
+import sistemaEstacionamientoMedido.SEM;
+
 import static org.junit.jupiter.api.Assertions.*;
 
 public class HorasPuntuales extends Compra {
@@ -19,7 +22,7 @@ public class HorasPuntuales extends Compra {
 	@Override
 	public void realizarCompra() {
 		HorasPuntuales HPuntuales = new HorasPuntuales(cantHoras, fechaYHora, patenteAuto, patenteAuto, cantHoras);
-		//Hay que elevarlo a la superclase
+		SEM.registrarCompra(HPuntuales);
 	}
 	
 	public String getPatenteAuto() {
@@ -36,5 +39,25 @@ public class HorasPuntuales extends Compra {
 	
 	public int getHoras() {
 		return cantHoras;
+	}
+	
+	@Override
+	public void setNroControl(int nuevoNumero) {
+		this.nroControl = nuevoNumero;
+	}
+	
+	@Override
+	public void cambiarFechaYHora(ChronoLocalDate fechaYHoraNuevo) {
+		this.fechaYHora = fechaYHoraNuevo;
+	}
+	
+	@Override
+	public int getNroControl() {
+		return nroControl;
+	}
+	
+	@Override
+	public ChronoLocalDate getFechaYHora() {
+		return fechaYHora;
 	}
 }

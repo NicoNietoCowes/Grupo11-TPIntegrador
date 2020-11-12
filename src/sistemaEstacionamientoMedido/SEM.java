@@ -19,7 +19,7 @@ public class SEM {
 	private Double precioPorHora;
 	private ArrayList<Infraccion> infracciones;
 	private ArrayList<ZonaDeEstacionamiento> zonasDeEstacionamiento;
-	private ArrayList<Compra> compras;
+	private static ArrayList<Compra> compras;
 	private ArrayList<Estacionamiento> estacionamientos;
 	
 	
@@ -34,7 +34,7 @@ public class SEM {
 		
 	}
 
-	public void registrarCompra(Compra compra) {
+	public static void registrarCompra(Compra compra) {
 		compras.add(compra);
 	}
 

@@ -1,8 +1,8 @@
 package compra;
 
-import static org.mockito.Mockito.*;
 import java.time.chrono.ChronoLocalDate;
-import static org.junit.jupiter.api.Assertions.*;
+
+import sistemaEstacionamientoMedido.SEM;
 
 public class Compra extends puntoDeVenta.PuntoDeVenta {
 
@@ -16,6 +16,22 @@ public class Compra extends puntoDeVenta.PuntoDeVenta {
 	}
 	
 	protected void realizarCompra() {
-	 //delegado a las subclases
+	 SEM.registrarCompra(this);
+	}
+	
+	public void setNroControl(int nuevoNumero) {
+		this.nroControl = nuevoNumero;
+	}
+	
+	public void cambiarFechaYHora(ChronoLocalDate fechaYHoraNuevo) {
+		this.fechaYHora = fechaYHoraNuevo;
+	}
+	
+	public int getNroControl() {
+		return nroControl;
+	}
+	
+	public ChronoLocalDate getFechaYHora() {
+		return fechaYHora;
 	}
 }

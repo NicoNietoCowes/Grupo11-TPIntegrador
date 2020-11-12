@@ -5,6 +5,7 @@ import java.time.chrono.ChronoLocalDate;
 import static org.junit.jupiter.api.Assertions.*;
 
 import appdelcelular.AppCelular;
+import sistemaEstacionamientoMedido.SEM;
 
 public class RecargaCelular extends Compra {
 
@@ -22,7 +23,7 @@ public class RecargaCelular extends Compra {
 	public void realizarCompra() {
 		RecargaCelular recarga = new RecargaCelular(nroControl, fechaYHora, numeroCel, numeroCel, monto);
 		this.cambiaMonto(0);
-		//hay que elevarlo a la superclase
+		SEM.registrarCompra(recarga);
 	}
 	
 	public String getNumeroCelular() {
@@ -39,5 +40,25 @@ public class RecargaCelular extends Compra {
 	
 	public void cambiaMonto(double nuevoMonto) {
 		this.monto = nuevoMonto;
+	}
+	
+	@Override
+	public void setNroControl(int nuevoNumero) {
+		this.nroControl = nuevoNumero;
+	}
+	
+	@Override
+	public void cambiarFechaYHora(ChronoLocalDate fechaYHoraNuevo) {
+		this.fechaYHora = fechaYHoraNuevo;
+	}
+	
+	@Override
+	public int getNroControl() {
+		return nroControl;
+	}
+	
+	@Override
+	public ChronoLocalDate getFechaYHora() {
+		return fechaYHora;
 	}
 }
