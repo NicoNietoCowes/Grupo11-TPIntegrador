@@ -3,11 +3,23 @@ package appdelcelular;
 import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.Mockito.*;
 
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 class CaminandoEstadoAppTestCase {
 	private AppCelular appRef = mock(AppCelular.class);
+	private AppCelular appRef2 = mock(AppCelular.class);
 	private EstadoApp caminando = new Caminando(appRef);
+	
+	@BeforeEach
+	public void setUp() {
+		// SetUp de las apps mockeadas
+		when(appRef.tieneEstacionamientoVigente()).thenReturn(true);
+		when(appRef.seEncuentraEnLaZonaDeSuEstacionamiento()).thenReturn(true);
+		
+		when(appRef2.tieneEstacionamientoVigente()).thenReturn(true);
+		when(appRef2.seEncuentraEnLaZonaDeSuEstacionamiento()).thenReturn(false);
+	}
 	
 	@Test
 	void testGetApp() {
@@ -32,6 +44,16 @@ class CaminandoEstadoAppTestCase {
 		 * recibe el mensaje .posibleFinDeEstacionamiento. Además, el estado de la app se modifica, no tengo forma de referenciar
 		 * este nuevo estado que va a ser del tipo EstadoApp, especificamente Manejando (no se me ocurre como hacerlo con mocks, pero
 		 * el .cambiarEstado(nuevoEstado) de la app está testeado en la app propiamente). */
+	}
+	
+	@Test
+	void testInteraccionConLaApp2CuandoSeActualizaElEstadoAManejando() {
+		caminando.setAppDeReferencia(appRef2);
+		caminando.walking();
+		verify(appRef2).tieneEstacionamientoVigente();
+		verify(appRef2).seEncuentraEnLaZonaDeSuEstacionamiento();
+		/** En este caso solo le llegan los mensajes de consulta a la appRef2, pero como no cumple las condiciones
+		 *  para un posibleFinDeEstacionamiento no se le manda nada. */
 	}
 	
 }

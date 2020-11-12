@@ -7,7 +7,7 @@ public abstract class EstadoApp {
 		this.setAppDeReferencia(appRef);
 	}
 	
-	private void setAppDeReferencia(AppCelular app) {
+	protected void setAppDeReferencia(AppCelular app) {
 		this.appDeReferencia = app;
 	}
 	
