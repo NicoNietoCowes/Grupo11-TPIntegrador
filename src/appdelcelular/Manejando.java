@@ -11,9 +11,12 @@ public class Manejando extends EstadoApp {
 	@Override
 	public void driving() {}
 
+	/** Si en la app el estado es "manejando" y se recibe un mensaje .walking() 
+	 * el estado corrobora si la app no tiene un estacionamiento asociado y si se encuentra actualmente
+	 * en una zona de estacionamiento. De ser así, se cambia el estado de la app a "caminando" y se informa de un
+	 * posible inicio de estacionamiento. */
 	@Override
 	public void walking() {
-		//  controlar si no tiene estacionamiento vigente y se encuentra en una zonaEST
 		if (!this.getAppDeReferencia().tieneEstacionamientoAsociado() && this.getAppDeReferencia().seEncuentraEnZonaEst()) {
 			this.getAppDeReferencia().cambiarEstado(new Caminando(this.getAppDeReferencia()));
 			this.getAppDeReferencia().posibleInicioDeEstacionamiento();	
