@@ -11,34 +11,55 @@ public class RecargaCelular extends Compra {
 
 	private String numeroCel;
 	private Double monto;
+	private AppCelular appCel;
 	
 	public RecargaCelular(Integer nroControl, LocalDateTime fechaYHora, PuntoDeVenta pdv,
-						  String numeroCel, Double monto) {
+						  String numeroCel, Double monto, AppCelular app) {
 		super(nroControl, fechaYHora, pdv);
 		this.setNumeroCelular(numeroCel);
 		this.setMonto(monto);
+		this.setApp(app);
 	}
 	
+	
+	private void setApp(AppCelular app) {
+		appCel = app;
+	}
+
+
+	public AppCelular getApp() {
+		return appCel;
+	}
 	
 	public String getNumeroCelular() {
 		return numeroCel;
 	}
 	
-	public void setNumeroCelular(String numero) {
-		this.numeroCel = numero;
+	private void setNumeroCelular(String numero) {
+		numeroCel = numero;
 	}
 	
-	public double getMonto() {
+	public Double getMonto() {
 		return monto;
 	}
 	
-	public void setMonto(double nuevoMonto) {
-		this.monto = nuevoMonto;
+	private void setMonto(Double m) {
+		monto = m;
 	}
 
 	@Override
-	protected void efectuarCompra() {
-		// TODO Auto-generated method stub
+	public void efectuarCompra() {
+		
+		appCel.cargarCredito(this.calcularCredito());
 		
 	}
+	
+	public Integer calcularCredito() {
+		Double precioPorHoraDelSem = this.getPuntoDeVenta().getSEM().getPrecioPorHora(); 
+		Double creditoACargar = (monto * 60) / precioPorHoraDelSem;
+		Integer c = new Integer(creditoACargar.intValue());
+		return c;
+	}
+
+
 }

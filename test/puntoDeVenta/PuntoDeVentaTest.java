@@ -6,6 +6,7 @@ import static org.mockito.Mockito.*;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
+import compra.CompraHorasPuntuales;
 import sistemaEstacionamientoMedido.SEM;
 import zonaDeEstacionamiento.ZonaDeEstacionamiento;
 
@@ -14,7 +15,7 @@ public class PuntoDeVentaTest {
 	private PuntoDeVenta puntoDeVenta;
 	private ZonaDeEstacionamiento zona1 = mock(ZonaDeEstacionamiento.class);
 	private SEM sem = mock(SEM.class);
-	
+	private CompraHorasPuntuales compra = mock(CompraHorasPuntuales.class);
 	
 	@BeforeEach
 	void setUp() throws Exception {
@@ -36,6 +37,11 @@ public class PuntoDeVentaTest {
 		assertEquals(sem, puntoDeVenta.getSEM());
 	}
 
+	@Test
+	void testRegistrarCompra() {
+		puntoDeVenta.registrarCompra(compra);
+		verify(sem).registrarCompra(compra);
+	}
 	
 
 }

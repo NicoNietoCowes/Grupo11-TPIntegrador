@@ -18,11 +18,11 @@ public abstract class Compra {
 		this.setPuntoDeVenta(pdv);
 	}
 	
-	public void setNroControl(Integer numero) {
+	private void setNroControl(Integer numero) {
 		nroControl = numero;
 	}
 	
-	public void setFechaYHora(LocalDateTime fyh) {
+	private void setFechaYHora(LocalDateTime fyh) {
 		fechaYHora = fyh;
 	}
 	
@@ -42,5 +42,5 @@ public abstract class Compra {
 		return puntoDeVenta;
 	}
 
-	protected abstract void efectuarCompra();
+	public abstract void efectuarCompra();
 }

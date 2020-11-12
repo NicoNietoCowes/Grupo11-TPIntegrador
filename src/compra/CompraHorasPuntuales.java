@@ -42,7 +42,7 @@ public class CompraHorasPuntuales extends Compra {
 	}
 
 	@Override
-	protected void efectuarCompra() {
+	public void efectuarCompra() {
 		this.getPuntoDeVenta().getSEM().registrarEstacionamiento(this.getEstacionamiento());
 		
 	}
