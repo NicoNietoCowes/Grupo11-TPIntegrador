@@ -17,7 +17,7 @@ public class RecargaCelularTest {
 	
 	@Test
 	void testeoQueRecargoDelCelu() {
-		assertEquals("Desde App", recargando.getComercio());
+		assertEquals("Desde App", recargando.getNombreComercio());
 	}
 
 	@Test

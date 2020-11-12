@@ -1,37 +1,46 @@
 package compra;
 
+import java.time.LocalDateTime;
 import java.time.chrono.ChronoLocalDate;
 
+import puntoDeVenta.PuntoDeVenta;
 import sistemaEstacionamientoMedido.SEM;
 
-public class Compra extends puntoDeVenta.PuntoDeVenta {
+public abstract class Compra {
 
-	protected int nroControl;
-	protected ChronoLocalDate fechaYHora;
+	private Integer nroControl;
+	private LocalDateTime fechaYHora;
+	private PuntoDeVenta puntoDeVenta;
 	
-	public Compra(int nroControl, ChronoLocalDate fechaYHora, String nombreComercio) {
-		super(nombreComercio);
-		this.fechaYHora = fechaYHora;
-		this.nroControl = nroControl;
+	public Compra(Integer nroControl, LocalDateTime fechaYHora, PuntoDeVenta pdv) {
+		this.setNroControl(nroControl);
+		this.setFechaYHora(fechaYHora);
+		this.setPuntoDeVenta(pdv);
 	}
 	
-	protected void realizarCompra() {
-	 SEM.registrarCompra(this);
+	public void setNroControl(Integer numero) {
+		nroControl = numero;
 	}
 	
-	public void setNroControl(int nuevoNumero) {
-		this.nroControl = nuevoNumero;
+	public void setFechaYHora(LocalDateTime fyh) {
+		fechaYHora = fyh;
 	}
 	
-	public void cambiarFechaYHora(ChronoLocalDate fechaYHoraNuevo) {
-		this.fechaYHora = fechaYHoraNuevo;
+	private void setPuntoDeVenta(PuntoDeVenta pdv) {
+		puntoDeVenta = pdv;	
 	}
 	
-	public int getNroControl() {
+	public Integer getNroControl() {
 		return nroControl;
 	}
 	
-	public ChronoLocalDate getFechaYHora() {
+	public LocalDateTime getFechaYHora() {
 		return fechaYHora;
 	}
+	
+	public PuntoDeVenta getPuntoDeVenta() {
+		return puntoDeVenta;
+	}
+
+	protected abstract void efectuarCompra();
 }

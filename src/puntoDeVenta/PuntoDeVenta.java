@@ -1,33 +1,38 @@
 package puntoDeVenta;
 
-import static org.mockito.Mockito.*;
 import compra.Compra;
 import sistemaEstacionamientoMedido.SEM;
 import zonaDeEstacionamiento.ZonaDeEstacionamiento;
 
-import static org.junit.jupiter.api.Assertions.*;
-
 public class PuntoDeVenta {
 
 	private String nombreComercio;
+	private ZonaDeEstacionamiento zonaEstacionamiento;
+	private SEM sem;
 	
-	public PuntoDeVenta(String nombreComercio) {
-		this.nombreComercio = nombreComercio;
+	public PuntoDeVenta(String nombre, ZonaDeEstacionamiento zona, SEM s) {
+		nombreComercio = nombre;
+		zonaEstacionamiento = zona;
+		sem = s;
 	}
 	
-	public void registrarCompra(Compra compra) {
-		SEM.registrarCompra(compra);
+	
+	public ZonaDeEstacionamiento getZonaDeEstacionamiento() {
+		return zonaEstacionamiento;
 	}
 	
-	private String getZona(ZonaDeEstacionamiento zonaE) {
-		return zonaE.nombre();
-	}
-	
-	public String getComercio() {
+	public String getNombreComercio() {
 		return nombreComercio;
 	}
 	
-	public void setComercio(String comercio) {
-		this.nombreComercio = comercio;
+	public void registrarCompra(Compra compra) {
+		compra.efectuarCompra();
+		sem.registrarCompra(compra);
 	}
+
+
+	public SEM getSEM() {
+		return sem;
+	}
+
 }

@@ -28,7 +28,7 @@ public class ZonaDeEstacionamiento {
 		return inspector;
 	}
 	
-	public String nombre() {
+	public String getNombre() {
 		return nombre;
 	}
 	

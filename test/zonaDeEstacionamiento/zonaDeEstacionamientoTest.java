@@ -35,7 +35,7 @@ class zonaDeEstacionamientoTest {
 
 	@Test
 	void testGetNombre() {
-		assertEquals("Zona 1", zona1.nombre());
+		assertEquals("Zona 1", zona1.getNombre());
 	}
 	
 }
