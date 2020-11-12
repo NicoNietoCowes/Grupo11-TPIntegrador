@@ -21,13 +21,15 @@ class AppCelularTestCase {
 	private EstViaApp estacionamientoApp = mock(EstViaApp.class);
 	private AppCelular app = new AppCelular("1130949597", "MYX520", manual, sem);
 	private ZonaDeEstacionamiento zona1 = mock(ZonaDeEstacionamiento.class);
+	private ZonaDeEstacionamiento zona2 = mock(ZonaDeEstacionamiento.class);
 	
 	@BeforeEach
 	public void setUp() {
 		app.cambiarEstado(manejando);
 		
 		// SetUp del estacionamientoApp mockeado:
-		when(estacionamientoApp.getHoraInicio()).thenReturn(LocalTime.of(17, 00));
+		when(estacionamientoApp.getZona()).thenReturn(zona1);
+		when(sem.getFinFranjaHoraria()).thenReturn(LocalTime.of(20, 00));
 	}
 	
 	@Test
@@ -50,7 +52,7 @@ class AppCelularTestCase {
 	@Test
 	void testConsultaCredito() {
 		app.cargarCredito(40);
-		assertEquals("Este celular (1130949597) cuenta con 40 créditos de estacioamiento", app.consultaDeSaldo());
+		assertEquals("Este celular (1130949597) cuenta con 40 créditos de estacionamiento", app.consultaDeSaldo());
 	}
 	
 	@Test
@@ -140,15 +142,17 @@ class AppCelularTestCase {
 	@Test
 	void testInicioDeEstacionamientoConCreditoPasandoLaFranjaHoraria() {
 		app.cargarCredito(120);
-		assertEquals("¡Estacionamiento iniciado! Hora de comienzo: 11:00, Hora máxima de finalización: 20:00", app.inicioDeEstacionamiento(LocalTime.of(19, 30)));
+		assertEquals("¡Estacionamiento iniciado! Hora de comienzo: 19:30, Hora máxima de finalización: 20:00", app.inicioDeEstacionamiento(LocalTime.of(19, 30)));
 	}
 	
 	@Test
 	void testFinDeEstacionamiento() {
-		app.cargarCredito(100);
 		app.asociarEstacionamiento(estacionamientoApp);
-		assertEquals("¡Estacionamiento finalizado! Hora de comienzo: 17:00, Hora de finalización: 18:30, Horas totales: 01:30,"
-				+ " Costo de estacionamiento (en créditos): 90, Crédito disponible: 10", app.finDeEstacionamiento(LocalTime.of(18, 30)));
+		app.finDeEstacionamiento(LocalTime.of(17, 00));
+		verify(estacionamientoApp).finalizarEstacionamiento(LocalTime.of(17, 00));
+		verify(estacionamientoApp).getHoraInicio();
+		verify(estacionamientoApp).horasTranscurridas(LocalTime.of(17, 00));
+		verify(estacionamientoApp).costoActual(LocalTime.of(17, 00));
 	}
 	
 	@Test
@@ -159,16 +163,30 @@ class AppCelularTestCase {
 	}
 	
 	@Test 
-	void testTieneEstacionamientoVigente() {
-		assertFalse(app.tieneEstacionamientoVigente());
+	void testTieneEstacionamientoAsociado() {
+		assertFalse(app.tieneEstacionamientoAsociado());
 		app.asociarEstacionamiento(estacionamientoApp);
-		assertTrue(app.tieneEstacionamientoVigente());
+		assertTrue(app.tieneEstacionamientoAsociado());
 	}
 	
 	@Test
 	void getEstacionamiento() {
 		app.asociarEstacionamiento(estacionamientoApp);
 		assertEquals(estacionamientoApp, app.getEstacionamiento());
+	}
+	
+	@Test
+	void testSeEncuentraEnlaMismaZonaQueEstacionó() {
+		app.actualizarLocalizacion(zona1);
+		app.asociarEstacionamiento(estacionamientoApp);
+		assertTrue(app.seEncuentraEnLaZonaDeSuEstacionamiento());
+	}
+	
+	@Test
+	void testNoSeEncuentraEnlaMismaZonaQueEstacionó() {
+		app.actualizarLocalizacion(zona2);
+		app.asociarEstacionamiento(estacionamientoApp);
+		assertFalse(app.seEncuentraEnLaZonaDeSuEstacionamiento());
 	}
 	
 }

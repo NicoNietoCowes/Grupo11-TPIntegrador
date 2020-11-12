@@ -14,10 +14,10 @@ class CaminandoEstadoAppTestCase {
 	@BeforeEach
 	public void setUp() {
 		// SetUp de las apps mockeadas
-		when(appRef.tieneEstacionamientoVigente()).thenReturn(true);
+		when(appRef.tieneEstacionamientoAsociado()).thenReturn(true);
 		when(appRef.seEncuentraEnLaZonaDeSuEstacionamiento()).thenReturn(true);
 		
-		when(appRef2.tieneEstacionamientoVigente()).thenReturn(true);
+		when(appRef2.tieneEstacionamientoAsociado()).thenReturn(true);
 		when(appRef2.seEncuentraEnLaZonaDeSuEstacionamiento()).thenReturn(false);
 	}
 	
@@ -49,8 +49,8 @@ class CaminandoEstadoAppTestCase {
 	@Test
 	void testInteraccionConLaApp2CuandoSeActualizaElEstadoAManejando() {
 		caminando.setAppDeReferencia(appRef2);
-		caminando.walking();
-		verify(appRef2).tieneEstacionamientoVigente();
+		caminando.driving();
+		verify(appRef2).tieneEstacionamientoAsociado();
 		verify(appRef2).seEncuentraEnLaZonaDeSuEstacionamiento();
 		/** En este caso solo le llegan los mensajes de consulta a la appRef2, pero como no cumple las condiciones
 		 *  para un posibleFinDeEstacionamiento no se le manda nada. */

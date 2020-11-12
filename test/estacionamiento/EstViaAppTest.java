@@ -71,4 +71,9 @@ class EstViaAppTest {
 		assertFalse(estacionamientoApp2.estaVigente(LocalTime.of(20,01)));
 	}
 	
+	@Test
+	void testHorasTranscurridas() {
+		assertEquals(1, estacionamientoApp1.horasTranscurridas(LocalTime.of(16, 00)));
+	}
+	
 }

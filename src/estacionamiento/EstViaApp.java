@@ -42,11 +42,16 @@ public class EstViaApp extends Estacionamiento {
 	}
 
 	public void finalizarEstacionamiento(LocalTime horaActual) {
-		Integer i = (int) (long) ChronoUnit.MINUTES.between(this.getHoraInicio(), horaActual);
-		creditoEst -= i;
+		creditoEst -= this.costoActual(horaActual);
 		vigencia = false;
 	}
 
+	/** Devuelve el costo en créditos de estacionamiento que tiene este estacionamiento 
+	 * en un momento determinado. */
+	public Integer costoActual(LocalTime horaConsulta) {
+		return (int) (long) ChronoUnit.MINUTES.between(this.getHoraInicio(), horaConsulta);
+	}
+	
 	@Override
 	public Boolean estaVigente(LocalTime horaActual) {
 		
@@ -56,6 +61,12 @@ public class EstViaApp extends Estacionamiento {
 	private Boolean excedeHoraFinal(LocalTime horaActual) {
 		
 		return horaActual.isAfter(this.horaFin());
+	}
+
+	/** Devuelve la cantidad de horas que transcurrieron desde el inicio del estacionamiento
+	 * hasta el momento en el que se le hace la consulta. */
+	public Integer horasTranscurridas(LocalTime horaConsulta) {
+		return (int) (long) ChronoUnit.HOURS.between(this.getHoraInicio(), horaConsulta);
 	}
 
 }

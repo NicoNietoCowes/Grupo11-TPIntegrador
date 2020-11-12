@@ -9,8 +9,10 @@ public class Caminando extends EstadoApp {
 	@Override
 	public void driving() {
 		// TODO: controlar si tiene estacionamiento vigente y se encuentra en la misma zonaEST del estacionamiento
-		this.getAppDeReferencia().cambiarEstado(new Manejando(this.getAppDeReferencia()));
-		this.getAppDeReferencia().posibleFinDeEstacionamiento();			
+		if (this.getAppDeReferencia().tieneEstacionamientoAsociado() && this.getAppDeReferencia().seEncuentraEnLaZonaDeSuEstacionamiento()) {
+			this.getAppDeReferencia().cambiarEstado(new Manejando(this.getAppDeReferencia()));
+			this.getAppDeReferencia().posibleFinDeEstacionamiento();	
+		}
 	}
 
 	/** Si en la app el estado ya es "caminando" y le siguen
