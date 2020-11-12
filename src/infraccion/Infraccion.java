@@ -10,7 +10,8 @@ public class Infraccion {
 	private Inspector inspector;
 	private String patente;
 	
-
+	/** Constructor de Infracción, se indica un String representando la patente, LocalDateTime representando la fecha y 
+	 * la hora en la que se declara y el Inspector que la declaró. */
 	public Infraccion(String pat, LocalDateTime fyh, Inspector insp) {
 		patente = pat;
 		fechaYHora = fyh;
