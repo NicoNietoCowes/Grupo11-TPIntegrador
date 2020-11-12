@@ -13,7 +13,7 @@ import zonaDeEstacionamiento.ZonaDeEstacionamiento;
 
 public class PuntoDeVentaTest {
 
-	//clases
+	//clase mock
 	private PuntoDeVenta puntoDeV = mock(PuntoDeVenta.class);
 	
 	//instancias
@@ -41,5 +41,12 @@ public class PuntoDeVentaTest {
 		assertEquals(lugar.getComercio(), "Maxikiosco Pepe");
 		lugar.setComercio("ciber");
 		assertEquals(lugar.getComercio(), "ciber");
+	}
+	
+	@Test
+	void testeandoPuntoDeV() {
+		puntoDeV.setComercio("ciber soul");
+		puntoDeV.setComercio(null);
+		assertEquals(puntoDeV.getComercio(), null);
 	}
 }
