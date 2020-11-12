@@ -13,7 +13,7 @@ import zonaDeEstacionamiento.ZonaDeEstacionamiento;
 
 public class PuntoDeVentaTest {
 
-	//clase mock
+	//instancias mock
 	private PuntoDeVenta puntoDeV = mock(PuntoDeVenta.class);
 	
 	//instancias

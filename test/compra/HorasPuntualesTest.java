@@ -1,35 +1,28 @@
 package compra;
 
 import static org.junit.jupiter.api.Assertions.*;
+import static org.mockito.Mockito.*;
 
-import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-
-import zonaDeEstacionamiento.ZonaDeEstacionamiento;
 
 public class HorasPuntualesTest {
 
-	//clases
+	//instancia mock
 	private Compra horasPuntuales = mock(HorasPuntuales.class);
 	
 	//instancias
-	private Compra compraPuntual = new HorasPuntuales(0, null, "LYK887", null, 4);
+	private HorasPuntuales compraPuntual = new HorasPuntuales(0, null, "Ciber Soul", "LYK887", 4);
 	
-	@BeforeEach
-	void setUp() throws Exception {
-		zona1 = new ZonaDeEstacionamiento();
-//		zona1.añadirPuntoDeVenta(puntoDeVenta1);
-//		zona1.añadirPuntoDeVenta(puntoDeVenta2);
+
+	@Test
+	
+	void testCompraEnLugarCorrecto() {
+		assertEquals("Ciber Soul", compraPuntual.getComercio());
 	}
-	
 	
 	@Test
-	void test() {
-		assertEquals();
+	
+	void testComprueboCompraEnAutoCorrecto() {
+		assertEquals("LYK887", compraPuntual.getPatenteAuto());
 	}
-
-/*	@Test
-	void test() {
-	}
-*/
 }

@@ -1,36 +1,32 @@
 package compra;
 
 import static org.junit.jupiter.api.Assertions.*;
+import static org.mockito.Mockito.*;
 
-import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
-import zonaDeEstacionamiento.ZonaDeEstacionamiento;
 
 public class RecargaCelularTest {
 
-	//clases
+	//instancia mock
 	private Compra recarga = mock(RecargaCelular.class);
 	
 	//instancias
-	private Compra recargando = new RecargaCelular(0, null, "1169540055", null, 200);
-	
-	@BeforeEach
-	void setUp() throws Exception {
-		zona1 = new ZonaDeEstacionamiento();
-//		zona1.añadirPuntoDeVenta(puntoDeVenta1);
-//		zona1.añadirPuntoDeVenta(puntoDeVenta2);
-	}
+	private RecargaCelular recargando = new RecargaCelular(0, null, "Desde App", "1169540055", 200);
 	
 	
 	@Test
-	void test() {
-		assertEquals();
+	void testeoQueRecargoDelCelu() {
+		assertEquals("Desde App", recargando.getComercio());
 	}
 
-/*	@Test
-	void test() {
+	@Test
+	void testeoCargaCorrectamenteConElnumero() {
+		assertEquals("1169540055",recargando.getNumeroCelular());
 	}
-*/
 	
+	@Test
+	void testeoCargaDeMontoCorrecta() {
+		assertEquals(200, recargando.getMonto());
+	}
 }
