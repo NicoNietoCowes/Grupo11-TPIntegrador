@@ -24,7 +24,7 @@ public class ZonaDeEstacionamiento {
 		return puntosDeVenta;
 	}
 
-	public Object getInspector() {
+	public Inspector getInspector() {
 		return inspector;
 	}
 	

@@ -9,7 +9,6 @@ import java.time.LocalTime;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
-import estacionamiento.EstCompraPuntual;
 import sistemaEstacionamientoMedido.SEM;
 import puntoDeVenta.PuntoDeVenta;
 
@@ -17,14 +16,11 @@ public class CompraHorasPuntualesTest {
 
 	private CompraHorasPuntuales compraHorasPuntuales;
 	private PuntoDeVenta puntoDeVenta = mock(PuntoDeVenta.class);
-	//private SEM sem = mock(SEM.class);
-	private EstCompraPuntual estacionamiento;
 	private SEM sem;
 
 	@BeforeEach
 	void setUp() throws Exception {
 		compraHorasPuntuales = new CompraHorasPuntuales(123, LocalDateTime.of(2020, 11, 12, 15, 00), "ABC123", 3, puntoDeVenta);
-		estacionamiento = compraHorasPuntuales.getEstacionamiento();
 		sem = new SEM(LocalTime.of(07,00), LocalTime.of(20,00), 40.00);
 		when(puntoDeVenta.getSEM()).thenReturn(sem);
 	}

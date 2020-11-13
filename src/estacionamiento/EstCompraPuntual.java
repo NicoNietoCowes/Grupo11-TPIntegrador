@@ -2,26 +2,25 @@ package estacionamiento;
 
 import java.time.LocalTime;
 
+import compra.CompraHorasPuntuales;
 import sistemaEstacionamientoMedido.SEM;
 import zonaDeEstacionamiento.ZonaDeEstacionamiento;
 
 public class EstCompraPuntual extends Estacionamiento {
 
-	private String patente;
 	private Integer cantHoras;
-	private LocalTime HoraInicio;
-	private ZonaDeEstacionamiento zonaEst;
-	private SEM sem;
+	private CompraHorasPuntuales compraReferencia;
 	
-	public EstCompraPuntual(String pat, Integer horas, LocalTime horaIni, ZonaDeEstacionamiento zona, SEM s) {
+	public EstCompraPuntual(String pat, Integer horas, LocalTime horaIni, ZonaDeEstacionamiento zona, 
+			SEM s, CompraHorasPuntuales compraRef) {
 		super(pat, horaIni, zona, s);
 		cantHoras = horas;
+		compraReferencia = compraRef;
 	}
 
 	@Override
 	public LocalTime horaFin() {
 		LocalTime horaFin = this.getHoraInicio().plusHours(this.getCantHoras());
-		
 		return horaFin;
 	}
 
@@ -34,4 +33,7 @@ public class EstCompraPuntual extends Estacionamiento {
 		return cantHoras;
 	}
 
+	public CompraHorasPuntuales getCompraReferencia() {
+		return this.compraReferencia;
+	}
 }

@@ -3,7 +3,6 @@ package compra;
 import java.time.LocalDateTime;
 
 import estacionamiento.EstCompraPuntual;
-import estacionamiento.Estacionamiento;
 import puntoDeVenta.PuntoDeVenta;
 
 public class CompraHorasPuntuales extends Compra {
@@ -33,11 +32,10 @@ public class CompraHorasPuntuales extends Compra {
 		return patente;
 	}
 
-
 	public EstCompraPuntual getEstacionamiento() {
-		EstCompraPuntual estacionamiento = new EstCompraPuntual(this.getPatente(), this.getCantidadDeHoras(), 
-																this.getFechaYHora().toLocalTime(), getPuntoDeVenta().getZonaDeEstacionamiento(),
-																this.getPuntoDeVenta().getSEM());
+		EstCompraPuntual estacionamiento = 
+				new EstCompraPuntual(this.getPatente(), this.getCantidadDeHoras(), this.getFechaYHora().toLocalTime(), 
+						getPuntoDeVenta().getZonaDeEstacionamiento(), this.getPuntoDeVenta().getSEM(), this);
 		return estacionamiento;
 	}
 
