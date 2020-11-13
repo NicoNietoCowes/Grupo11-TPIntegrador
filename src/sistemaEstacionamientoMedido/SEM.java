@@ -1,9 +1,9 @@
 package sistemaEstacionamientoMedido;
 
-import java.time.LocalDateTime;
 import java.time.LocalTime;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Observable;
 import java.util.stream.Collectors;
 
 import compra.Compra;
@@ -12,7 +12,8 @@ import infraccion.Infraccion;
 import inspector.Inspector;
 import zonaDeEstacionamiento.ZonaDeEstacionamiento;
 
-public class SEM {
+@SuppressWarnings("deprecation")
+public class SEM extends Observable {
 
 	private LocalTime comienzoFranjaHoraria;
 	private LocalTime finFranjaHoraria;
@@ -68,8 +69,11 @@ public class SEM {
 		return infracciones;
 	}
 
+	/** Añade el estacionamiendo dado al listado de estacionamientos registrados y notifica el registro a 
+	 * las clases que se encuentren observando. */
 	public void registrarEstacionamiento(Estacionamiento estacionamiento) {
-		this.estacionamientos.add(estacionamiento);		
+		this.estacionamientos.add(estacionamiento);	
+		this.notificar("EstacionamientoRegistrado");
 	}
 
 	public ArrayList<Compra> getCompras() {
@@ -79,16 +83,25 @@ public class SEM {
 	public void finalizarEstacionamiento(Estacionamiento estacionamientoAFinalizar) {
 		// prec: el estacionamientoAFinalizar tiene que estar en la lista.
 		this.estacionamientos.remove(estacionamientoAFinalizar);
+		this.notificar("EstacionamientoFinalizado");
 	}
 
 	public ArrayList<Estacionamiento> getEstacionamientos() {
 		return this.estacionamientos;
 	}
 
-	public void finalizarTodosLosEstacionamientos(LocalTime horaDeFin) {
+	/** Se encarga de finalizar todos los estacionamientos (borra el registro que lleva de ellos en el listado). 
+	 * OBSERVACIÓN: Solo puede acceder el operador del SEM y ejecutarlo una vez pasado el fin de franja horaria determinado.  */
+	protected void finalizarTodosLosEstacionamientos(LocalTime horaDeFin) {
 		if (horaDeFin.isAfter(this.getFinFranjaHoraria().minusMinutes(1))) {
 			this.getEstacionamientos().clear();
-		}
-		
+			this.notificar("EstacionamientosFinalizadosPorFinFranjaHoraria");
+		}		
+	}
+	
+	/** Método utilizado para notificar a todo aquel que se encuentre observando al SEM. */
+	private void notificar(String aspecto) {
+		this.setChanged();
+		this.notifyObservers(aspecto);
 	}
 }
